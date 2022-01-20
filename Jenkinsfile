@@ -8,9 +8,9 @@ pipeline {
 	        MINOR = '1'
 	        //Orchestrator Services
 	        UIPATH_ORCH_URL = "https://cloud.uipath.com/"
-	        UIPATH_ORCH_LOGICAL_NAME = "anupaminc"
-	        UIPATH_ORCH_TENANT_NAME = "Descriptify"
-	        UIPATH_ORCH_FOLDER_NAME = "Default"
+	        UIPATH_ORCH_LOGICAL_NAME = "persoezesypg"
+	        UIPATH_ORCH_TENANT_NAME = "DefaultTenant"
+	        UIPATH_ORCH_FOLDER_NAME = "Shared"
 	    }
 	
 
@@ -35,7 +35,7 @@ pipeline {
 	         // Building Tests
 	        stage('Build Tests') {
 	            steps {
-	                echo "Building package with ${WORKSPACE}"
+	                // echo "Building package with ${WORKSPACE}"
 	                UiPathPack (
 	                      outputPath: "Output\\Tests\${env.BUILD_NUMBER}",
 						  outputType: 'Tests',
@@ -50,7 +50,7 @@ pipeline {
 	         // Deploy Stages
 	        stage('Deploy Tests') {
 	            steps {
-	                echo "Deploying ${BRANCH_NAME} to orchestrator"
+	                // echo "Deploying ${BRANCH_NAME} to orchestrator"
 	                UiPathDeploy (
 	                packagePath: "Output\\Tests\${env.BUILD_NUMBER}",
 	                orchestratorAddress: "${UIPATH_ORCH_URL}",
